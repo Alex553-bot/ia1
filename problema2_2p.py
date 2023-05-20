@@ -58,17 +58,17 @@ pais    = 'Canada'
 ciudad  = 'Toronto'
 nombre  = 'Samantha Wilder'
 
+def rutas2(s):
+    st = '***'*20
+    st+='\n'
+    st += 'Rutas del pais: \n'
+    for a in s:
+        st+=a+'\n'
+    return st
+
 def nodo(s, x): 
     st = 'Nodo actual visitando: '+s
     st += ' calculo de su heuristica: '+str(x)
-    return st
-
-def mejor(s):
-    st = '*'*20
-    st +='\n'
-    st += 'Ruta de minimo coste seleccionada: \n'
-    for a in s:
-        st+=a+'\n'
     return st
     
 def simulated_annealing(mapa, ruta_actual):
@@ -95,7 +95,7 @@ def simulated_annealing(mapa, ruta_actual):
                 ruta.append(x[1])
                 ruta.append(mapa[x[1]])
                 coste = res
-                print('nueva solucion:')
+                print('Nueva Solucion encontrada:')
                 print(ruta)
                 print('Coste:'+str(coste))
                 if (coste<=limite):
@@ -103,7 +103,8 @@ def simulated_annealing(mapa, ruta_actual):
         else:
             antigua_ruta = ruta_actual.copy()
             ruta_actual.append(x)
-            print(mejor([x[1] for x in ruta_actual]))
+            im = ([x[1] for x in ruta_actual])
+            print(rutas2(im))
             nueva = simulated_annealing(mapa[x[1]], ruta_actual)
             if len(nueva)>2: 
                 return nueva
@@ -194,7 +195,7 @@ contact_map = {
         'Toronto': {
             'John Doe': '123456789',
             'Jane Smith': '987654321',
-            'Samantha Wilder': '555555555',
+            #'Samantha Wilder': '555555555',
             'Michael Johnson': '111111111',
             'David Brown': '222222222',
             'Emily Davis': '333333333'
@@ -332,7 +333,8 @@ contact_map = {
             'Olivia Vilson': '666666666',  
             'Ethan Haris': '777777777',  
             'Isabela Terner': '888888888',  
-            'Liam Andarsen': '999999999'  
+            'Liam Andarsen': '999999999',
+            'Samantha Wilder': '55555555'
         },
         'Vancouver': {
             'Sara Wilson': '111122222',  
